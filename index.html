@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Psychic Game</title>
+  </head>
+
+  <body>
+
+
+    <article id="body">
+    <div>
+      <h1>The Psychic Game</h1>
+      <div id="directions-text">Guess what letter I'm thinking of...press any letter to begin</div>
+      <br />
+      <div id="user-wins">Wins:</div>
+      <br />
+      <div id="user-losses">Losses:</div>
+      <br />
+      <div id="remaining-guesses">Remaining Guesses:</div>
+    </br>
+      <div id="user-already-guessed">You Already Guessed:<span id="user-already-guessed"></span></div>
+      <!-- DOES THIS DIV NEED TO EXIST IN ORDER TO CONSOLE LOG THE COMPUTER GUESS? -->
+      <div id="computerchoice-text"></div>
+    </div>
+</article>
+
+    <script type="text/javascript">
+      // Creates an array that lists all letters the computer can guess
+      var computerChoices = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ];
+
+      // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+      var wins = 0;
+      var losses = 0;
+      var remainingGuesses= 0;
+      var userAlreadyGuessed= [];
+      
+    
+      // Create variables that hold references to the places in the HTML where we want to display things.
+      
+      var winsText = document.getElementById("user-wins");
+      var userLosses = document.getElementById("user-losses");
+      var remainingGuesses = document.getElementById("remaining-guesses");
+      var userAlreadyGuessedDiv = document.getElementById("user-already-guessed");
+        console.log(userAlreadyGuessed);
+      //I DON'T WANT THIS TO PRINT TO THE HTML I JUST WANT IT TO CONSOLE LOG HOW DO I DO THAT?
+
+      function guessesLeft() {
+        userAlreadyGuessedDiv.innerHTML = userAlreadyGuessed
+      }
+
+      // document.querySelector("#body").innerHTML = html;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+          console.log(computerGuess);
+
+      // This function is run whenever the user presses a key.
+      document.onkeydown = function(event) {
+       
+        // Determines which key was pressed. HOW DO I HOOK THIS INTO THE ARRAY???
+        var userGuess = event.key;
+        console.log(userGuess);
+        // Do I need to make this new variable becasue it's within an onkey function or can I call the variable from line 69?
+        userAlreadyGuessed.push(userGuess);
+        guessesLeft();
+      }
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+    
+        // Reworked our code from last step to use "else if" instead of lots of if statements.
+
+        // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
+        // if (userGuess === computerGuess) {
+        //     wins++;
+        //   } else {
+        //     losses++;
+        //     remainingGuesses--;
+           
+        //   }
+
+
+
+
+
+
+          // Display the user and computer guesses, and wins/losses/ties.
+          // winsText.textContent = "wins: " + wins;
+          // lossesText.textContent = "losses: " + losses;
+          // remainingGuesses.textContent = "remaining guesses: " + ties;
+          // userAlreadyGuessed.textContent = "You chose: " + userGuess;
+      
+    </script>
+  </body>
+</html>
+// <!-- 
+// AMANDA'S HELP BELOW:
+//  Creating a variable to hold our new HTML. HTML will keep track of user gueses, wins, losses
+//     var html =
+//       "<p>wins: " + wins + "</p>" +
+//       "<p>losses: " + losses + "</p>" +
+//       "<p>guesses left: " + guessesLeft + "</p>" +
+//       "<p>letters guessed: " + lettersGuessed + "</p>";
+//     // Set the inner HTML contents of the #game div to our html string
+//     document.querySelector("#game").innerHTML = html; -->
